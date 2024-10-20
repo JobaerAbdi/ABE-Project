@@ -1,4 +1,5 @@
 import { ICONS } from "../../assets";
+import DeshboardButton from "../../Components/Shared/Button/Button";
 // import InputField from "../../Components/Shared/InputField/InputField";
 import StatusCard from "../../Components/Shared/StatusCard/StatusCard";
 const Dashboard = () => {
@@ -64,7 +65,6 @@ const Dashboard = () => {
         />
       </div>
 
-
       {/* Input field 
       <div>
         <InputField
@@ -73,6 +73,14 @@ const Dashboard = () => {
           icon={ICONS.InputField}
         />
       </div> */}
+
+      <DeshboardButton
+        text="Click Me"
+        imgSrc={ICONS.Button}
+        className="bg-secondary-120 hover:bg-secondary-30  mt-2  "
+        iconClassName="w-5 h-5"
+        onClick={() => alert("Button clicked!")}
+      />
     </>
   );
 };

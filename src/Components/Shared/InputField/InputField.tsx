@@ -54,7 +54,11 @@ const InputField: React.FC<TInputProps> = ({
       </label>
 
       {/* ------------------ Input fields -------------------- */}
-      <div className={`relative mt-2 rounded-md w-full ${inputBg}`}>
+      <div
+        className={`relative ${
+          label ? "mt-2" : null
+        }  rounded-md w-full ${inputBg}`}
+      >
         <input
           type={`${type ? type : "text"}`}
           className="w-full px-4 py-2 rounded-md border bg-transparent outline-none"

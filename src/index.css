@@ -6,3 +6,6 @@
 * {
   transition: 0.5s;
 }
+.active {
+  background: #730b0d !important;
+}

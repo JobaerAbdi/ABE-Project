@@ -13,7 +13,7 @@ const Layout = () => {
   return (
     <div className="flex gap-7 w-full h-full">
       <DashboardSidebar HandleSidebar={HandleSidebar} callNav={callNav} />
-      <div className="w-full px-4 pr-0 md:px-0 mr-7">
+      <div className="w-full px-4 pr-0 md:px-0 mr-4 sm:mr-7">
         <DashboardHeader HandleSidebar={HandleSidebar} callNav={callNav} />
         <Outlet></Outlet>
       </div>

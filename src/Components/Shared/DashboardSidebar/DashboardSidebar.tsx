@@ -100,7 +100,7 @@ const DashboardSidebar = () => {
 
       {/* ----------- admin part ------------  */}
       <div
-        className={`w-full flex justify-between   ${
+        className={`w-full flex justify-between  hover:bg-primary-20 p-3 rounded-md ${
           collaps ? "flex-col gap-2 items-center" : "flex-row items-start"
         }`}
       >

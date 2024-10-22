@@ -22,6 +22,7 @@ import InventoryIcon from "../assets/icons/inventorynav.svg";
 import PurchasesIcon from "../assets/icons/purchasesnav.svg";
 import SettingsIcon from "../assets/icons/settingsnav.svg";
 import RightArrorwIcon from "../assets/icons/rightArrow.svg";
+import Admin from "../assets/icons/admin.svg";
 
 // Import images here (if any)
 // import bell from "../assets/icons/Bell.svg"
@@ -48,6 +49,7 @@ export const ICONS = {
   PurchasesIcon,
   SettingsIcon,
   RightArrorwIcon,
+  Admin,
 };
 
 export const IMAGES = {

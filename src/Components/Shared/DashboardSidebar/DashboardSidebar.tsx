@@ -80,7 +80,7 @@ const DashboardSidebar = () => {
           {navItems.map((item, idx) => (
             <div
               key={idx}
-              className="w-full p-3 rounded-lg hover:bg-primary-20 flex justify-between items-center"
+              className="w-full p-3 gap-3 rounded-lg hover:bg-primary-20 flex justify-between items-center"
             >
               <div className="flex justify-center items-center gap-4">
                 <img src={item.icon} alt="dashboard icons" className="w-auto" />
@@ -96,6 +96,34 @@ const DashboardSidebar = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* ----------- admin part ------------  */}
+      <div
+        className={`w-full flex justify-between   ${
+          collaps ? "flex-col gap-2 items-center" : "flex-row items-start"
+        }`}
+      >
+        <div className={`flex justify-center items-center gap-4`}>
+          <img
+            src={ICONS.Admin}
+            alt="abirami Enterprises Admin"
+            className="w-auto"
+          />
+          <p
+            className={`text-white ${
+              collaps ? "hidden" : "block"
+            } text-[16px] leading-5`}
+          >
+            Admin
+          </p>
+        </div>
+        <img
+          onClick={() => setCollaps(!collaps)}
+          src={ICONS.RightArrorwIcon}
+          alt="CollapsIcon"
+          className={`cursor-pointer `}
+        />
       </div>
     </div>
   );

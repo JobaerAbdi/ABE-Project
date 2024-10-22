@@ -44,7 +44,7 @@ const DashboardSidebar = () => {
     <div
       className={`${
         collaps ? "w-[80px]" : "w-[218px]"
-      } px-4 py-7 border-r h-screen flex flex-col justify-between items-center bg-primary-10`}
+      } px-4 py-7 border-r h-screen cursor-pointer flex flex-col justify-between items-center bg-primary-10`}
     >
       <div className="">
         {/* ----- there is logo content ------------  */}
@@ -100,7 +100,7 @@ const DashboardSidebar = () => {
 
       {/* ----------- admin part ------------  */}
       <div
-        className={`w-full flex justify-between  hover:bg-primary-20 p-3 rounded-md ${
+        className={`w-full flex cursor-pointer justify-between  hover:bg-primary-20 p-3 rounded-md ${
           collaps ? "flex-col gap-2 items-center" : "flex-row items-start"
         }`}
       >

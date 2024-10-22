@@ -67,11 +67,15 @@ const DashboardSidebar = () => {
             <div
               key={idx}
               onClick={() => toggleItem(idx)}
-              className="w-full relative rounded-lg hover:bg-primary-20"
+              className={`w-full relative rounded-lg  hover:bg-primary-20 `}
             >
               <NavLink
                 to={item.path}
-                className="p-3 w-full gap-3 flex rounded-lg justify-between items-center"
+                className={`p-3 w-full gap-3 flex  ${
+                  item.text === "Suppliers" && activeItem === idx
+                    ? "rounded-t-lg"
+                    : "rounded-lg"
+                } justify-between  items-center`}
               >
                 <div className="flex justify-start items-center gap-4">
                   <img
@@ -99,15 +103,15 @@ const DashboardSidebar = () => {
               {/* Dropdown for Suppliers */}
               {item.text === "Suppliers" && activeItem === idx && (
                 <div
-                  className={`w-full flex rounded-lg flex-col bg-primary-20 ${
+                  className={`w-full flex rounded-b-lg flex-col bg-primary-20 ${
                     collaps
                       ? "absolute z-50 w-[200px] rounded-md overflow-hidden"
                       : ""
                   }`}
                 >
-                  <Link to="/">
+                  <Link to="/Suppliers/CreateSupplier">
                     <button className="p-3 border-0 text-white w-full">
-                      Option 1
+                      Create Supplier
                     </button>
                   </Link>
                   <Link to="/">

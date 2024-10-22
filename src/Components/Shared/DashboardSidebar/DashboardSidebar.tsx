@@ -2,28 +2,32 @@ import { useState } from "react";
 import { ICONS } from "../../../assets";
 import { Link, NavLink } from "react-router-dom";
 
+// Define the NavItem interface for the sidebar navigation items
 interface NavItem {
   icon: string;
   text: string;
   path: string;
 }
 
+// Define the DashboardHeaderProps interface for the props passed to the component
 interface DashboardHeaderProps {
-  HandleSidebar: (data: boolean) => void;
-  callNav: boolean;
+  HandleSidebar: (data: boolean) => void; // Function to toggle sidebar visibility
+  callNav: boolean; // State to check if the sidebar is currently visible
 }
 
 const DashboardSidebar: React.FC<DashboardHeaderProps> = ({
   HandleSidebar,
   callNav,
 }) => {
-  const [collaps, setCollaps] = useState(false);
-  const [activeItem, setActiveItem] = useState<number | null>(null);
+  const [collaps, setCollaps] = useState(false); // State to control sidebar collapse
+  const [activeItem, setActiveItem] = useState<number | null>(null); // State to track active dropdown items
 
+  // Function to toggle active items (used for dropdowns)
   const toggleItem = (idx: number) => {
     setActiveItem(activeItem === idx ? null : idx);
   };
 
+  // Define the navigation items for the sidebar
   const navItems: NavItem[] = [
     { icon: ICONS.DashboardIcon, text: "Dashboard", path: "/" },
     { icon: ICONS.ClientsIcon, text: "Clients", path: "/Clients" },
@@ -37,17 +41,20 @@ const DashboardSidebar: React.FC<DashboardHeaderProps> = ({
   return (
     <div
       className={`${
-        collaps ? "w-[80px]" : "min-w-[218px]"
+        collaps ? "w-[80px]" : "min-w-[218px]" // Conditionally set width for collapsed sidebar
       } transition-all duration-300 ease-in-out px-4 absolute md:static ${
-        callNav ? "left-0" : "-left-[100%]"
+        callNav ? "left-0" : "-left-[100%]" // Handle visibility on mobile by toggling left position
       } py-7 border-r z-50 h-screen cursor-pointer flex flex-col justify-between items-center bg-primary-10`}
     >
+      {/* Toggle sidebar visibility for mobile */}
       <span
         onClick={() => HandleSidebar(!callNav)}
         className="absolute top-2 right-2 block md:hidden"
       >
-        <img src={ICONS.CrossIcon} alt="CrossIcon" />
+        <img src={ICONS.CrossIcon} alt="Close Sidebar Icon" />
       </span>
+
+      {/* Sidebar content starts */}
       <div className="flex flex-col ">
         {/* Logo Section */}
         <div
@@ -55,10 +62,11 @@ const DashboardSidebar: React.FC<DashboardHeaderProps> = ({
             collaps ? "flex-col gap-7 items-center" : "flex-row items-start"
           }`}
         >
+          {/* Logo and text */}
           <div className="flex justify-center items-center gap-4">
             <img
               src={ICONS.logo}
-              alt="abirami Enterprises logo"
+              alt="Abirami Enterprises logo"
               className="w-auto"
             />
             <p
@@ -69,11 +77,13 @@ const DashboardSidebar: React.FC<DashboardHeaderProps> = ({
               Abirami <br /> Enterprises
             </p>
           </div>
+
+          {/* Collapse button */}
           <img
-            onClick={() => setCollaps(!collaps)}
+            onClick={() => setCollaps(!collaps)} // Collapse or expand the sidebar
             src={ICONS.CollapsIcon}
             alt="Collapse Icon"
-            className={`cursor-pointer ${collaps ? "rotate-180" : "rotate-0"}`}
+            className={`cursor-pointer ${collaps ? "rotate-180" : "rotate-0"}`} // Rotate icon based on collapse state
           />
         </div>
 
@@ -82,17 +92,18 @@ const DashboardSidebar: React.FC<DashboardHeaderProps> = ({
           {navItems.map((item, idx) => (
             <div
               key={idx}
-              onClick={() => toggleItem(idx)}
-              className={`w-full relative rounded-lg  hover:bg-primary-20 `}
+              onClick={() => toggleItem(idx)} // Toggle active item for dropdown functionality
+              className={`w-full relative rounded-lg hover:bg-primary-20`} // Apply hover effect for items
             >
               <NavLink
-                to={item.path}
-                className={`p-3 w-full gap-3 flex  ${
+                to={item.path} // Set the path for navigation
+                className={`p-3 w-full gap-3 flex ${
                   item.text === "Suppliers" && activeItem === idx
-                    ? "rounded-t-lg"
-                    : "rounded-lg"
-                } justify-between  items-center`}
+                    ? "rounded-t-lg" // If the dropdown is active, round the top corners only
+                    : "rounded-lg" // Otherwise, round the entire item
+                } justify-between items-center`}
               >
+                {/* Icon and text for each nav item */}
                 <div className="flex justify-start items-center gap-4">
                   <img
                     src={item.icon}
@@ -103,6 +114,8 @@ const DashboardSidebar: React.FC<DashboardHeaderProps> = ({
                     {item.text}
                   </p>
                 </div>
+
+                {/* Arrow icon for dropdown */}
                 <img
                   src={ICONS.RightArrorwIcon}
                   alt="Arrow Icon"
@@ -110,21 +123,22 @@ const DashboardSidebar: React.FC<DashboardHeaderProps> = ({
                     collaps ? "hidden" : "block rotate-transition"
                   } ${
                     item.text === "Suppliers" && activeItem === idx
-                      ? "rotate-90"
-                      : "rotate-0"
+                      ? "rotate-90" // Rotate arrow for active dropdown
+                      : "rotate-0" // Default rotation for non-active items
                   }`}
                 />
               </NavLink>
 
-              {/* Dropdown for Suppliers */}
+              {/* Dropdown for Suppliers section */}
               {item.text === "Suppliers" && activeItem === idx && (
                 <div
                   className={`w-full flex rounded-b-lg flex-col bg-primary-20 ${
                     collaps
-                      ? "absolute z-50 w-[200px] rounded-md overflow-hidden"
+                      ? "absolute z-50 w-[200px] rounded-md overflow-hidden" // For collapsed view, display dropdown as floating
                       : ""
                   }`}
                 >
+                  {/* Dropdown options */}
                   <Link to="/Suppliers/CreateSupplier">
                     <button className="p-3 border-0 text-white w-full">
                       Create Supplier
@@ -148,8 +162,9 @@ const DashboardSidebar: React.FC<DashboardHeaderProps> = ({
           collaps ? "flex-col gap-2 items-center" : "flex-row items-start"
         }`}
       >
+        {/* Admin icon and label */}
         <div className="flex justify-center items-center gap-4">
-          <img src={ICONS.Admin} alt="Admin" className="w-auto" />
+          <img src={ICONS.Admin} alt="Admin Icon" className="w-auto" />
           <p
             className={`text-white ${
               collaps ? "hidden" : "block"
@@ -159,9 +174,9 @@ const DashboardSidebar: React.FC<DashboardHeaderProps> = ({
           </p>
         </div>
         <img
-          onClick={() => setCollaps(!collaps)}
+          onClick={() => setCollaps(!collaps)} // Toggle collapse/expand on click
           src={ICONS.RightArrorwIcon}
-          alt="Collapse Icon"
+          alt="Arrow Icon"
           className="cursor-pointer"
         />
       </div>

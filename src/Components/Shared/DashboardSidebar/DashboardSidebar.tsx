@@ -8,7 +8,15 @@ interface NavItem {
   path: string;
 }
 
-const DashboardSidebar = () => {
+interface DashboardHeaderProps {
+  HandleSidebar: (data: boolean) => void;
+  callNav: boolean;
+}
+
+const DashboardSidebar: React.FC<DashboardHeaderProps> = ({
+  HandleSidebar,
+  callNav,
+}) => {
   const [collaps, setCollaps] = useState(false);
   const [activeItem, setActiveItem] = useState<number | null>(null);
 
@@ -30,8 +38,16 @@ const DashboardSidebar = () => {
     <div
       className={`${
         collaps ? "w-[80px]" : "min-w-[218px]"
-      } transition-all duration-300 ease-in-out px-4 py-7 border-r h-screen cursor-pointer flex flex-col justify-between items-center bg-primary-10`}
+      } transition-all duration-300 ease-in-out px-4 absolute md:static ${
+        callNav ? "left-0" : "-left-[100%]"
+      } py-7 border-r z-50 h-screen cursor-pointer flex flex-col justify-between items-center bg-primary-10`}
     >
+      <span
+        onClick={() => HandleSidebar(!callNav)}
+        className="absolute top-2 right-2 block md:hidden"
+      >
+        <img src={ICONS.CrossIcon} alt="CrossIcon" />
+      </span>
       <div className="flex flex-col ">
         {/* Logo Section */}
         <div

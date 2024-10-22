@@ -17,7 +17,7 @@ import CollapsIcon from "../assets/icons/collaps.svg";
 import DashboardIcon from "../assets/icons/dashboardnav.svg";
 import ClientsIcon from "../assets/icons/clientsnav.svg";
 import SuppliersIcon from "../assets/icons/suppliesnav.svg";
-import InvvoicesIcon from "../assets/icons/invoices.svg";
+import InvvoicesIcon from "../assets/icons/invoicesnav.svg";
 import InventoryIcon from "../assets/icons/inventorynav.svg";
 import PurchasesIcon from "../assets/icons/purchasesnav.svg";
 import SettingsIcon from "../assets/icons/settingsnav.svg";

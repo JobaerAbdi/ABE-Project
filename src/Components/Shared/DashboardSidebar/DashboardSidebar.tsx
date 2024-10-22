@@ -1,40 +1,101 @@
 import { useState } from "react";
 import { ICONS } from "../../../assets";
 
+interface NavItem {
+  icon: string;
+  text: string;
+}
+
 const DashboardSidebar = () => {
   const [collaps, setCollaps] = useState(false);
+
+  const navItems: NavItem[] = [
+    {
+      icon: ICONS.DashboardIcon,
+      text: "Dashboard",
+    },
+    {
+      icon: ICONS.ClientsIcon,
+      text: "Clients",
+    },
+    {
+      icon: ICONS.SuppliersIcon,
+      text: "Suppliers",
+    },
+    {
+      icon: ICONS.InvvoicesIcon,
+      text: "Invoices",
+    },
+    {
+      icon: ICONS.InventoryIcon,
+      text: "Inventory",
+    },
+    {
+      icon: ICONS.PurchasesIcon,
+      text: "Purchase",
+    },
+    {
+      icon: ICONS.SettingsIcon,
+      text: "Settings",
+    },
+  ];
+
   return (
     <div
       className={`${
         collaps ? "w-[80px]" : "w-[218px]"
-      } px-4 py-7 border-r h-screen flex flex-col justify-start items-center bg-primary-10`}
+      } px-4 py-7 border-r h-screen flex flex-col justify-between items-center bg-primary-10`}
     >
-      {/* ----- there is logo content ------------  */}
-      <div
-        className={`mb-7 flex justify-between items-start  ${
-          collaps ? "flex-col gap-7" : "flex-row"
-        }`}
-      >
-        <div className={`flex justify-center items-center gap-4`}>
+      <div className="">
+        {/* ----- there is logo content ------------  */}
+        <div
+          className={`mb-7 flex justify-between   ${
+            collaps ? "flex-col gap-7 items-center" : "flex-row items-start"
+          }`}
+        >
+          <div className={`flex justify-center items-center gap-4`}>
+            <img
+              src={ICONS.logo}
+              alt="abirami Enterprises logo"
+              className="w-auto"
+            />
+            <p
+              className={`text-white ${
+                collaps ? "hidden" : "block"
+              } text-[16px] leading-5`}
+            >
+              Abirami <br /> Enterprises
+            </p>
+          </div>
           <img
-            src={ICONS.logo}
-            alt="abirami Enterprises logo"
-            className="w-auto"
+            onClick={() => setCollaps(!collaps)}
+            src={ICONS.CollapsIcon}
+            alt="CollapsIcon"
+            className={`cursor-pointer ${collaps ? "rotate-180" : "rotate-0"}`}
           />
-          <p
-            className={`text-white ${
-              collaps ? "hidden" : "block"
-            } text-[16px] leading-5`}
-          >
-            Abirami <br /> Enterprises
-          </p>
         </div>
-        <img
-          onClick={() => setCollaps(!collaps)}
-          src={ICONS.CollapsIcon}
-          alt="CollapsIcon"
-          className={`cursor-pointer ${collaps ? "rotate-180" : "rotate-0"}`}
-        />
+        {/* ---------- there is nav item work -----------  */}
+
+        <div className="w-full">
+          {navItems.map((item, idx) => (
+            <div
+              key={idx}
+              className="w-full p-3 rounded-lg hover:bg-primary-20 flex justify-between items-center"
+            >
+              <div className="flex justify-center items-center gap-4">
+                <img src={item.icon} alt="dashboard icons" className="w-auto" />
+                <p className={`text-white ${collaps ? "hidden" : "block"} `}>
+                  {item.text}
+                </p>
+              </div>
+              <img
+                src={ICONS.RightArrorwIcon}
+                alt="RightArrorwIcon"
+                className={`${collaps ? "hidden" : "block"}`}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

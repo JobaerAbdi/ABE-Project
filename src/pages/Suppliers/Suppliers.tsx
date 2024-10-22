@@ -1,3 +1,9 @@
+import SuppliersCards from "./SuppliersCards";
+
 export default function Suppliers() {
-  return <div>Suppliers</div>;
+  return (
+    <div className="w-full">
+      <SuppliersCards />
+    </div>
+  );
 }

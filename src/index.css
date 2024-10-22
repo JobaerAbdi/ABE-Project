@@ -9,3 +9,6 @@
 .active {
   background: #730b0d !important;
 }
+.scroll-none::-webkit-scrollbar {
+  display: none;
+}

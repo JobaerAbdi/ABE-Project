@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <div className="flex gap-7 w-full h-full">
       <DashboardSidebar />
-      <div className="">
+      <div className="max-w-full">
         <DashboardHeader />
         <Outlet></Outlet>
       </div>

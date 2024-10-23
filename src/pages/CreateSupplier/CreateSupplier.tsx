@@ -189,7 +189,7 @@ const CreateSupplier = () => {
         </div>
 
         {/* Status */}
-        <div className="mt-5">
+        <div className="m-5">
           <h2 className="text-xl font-semibold mb-4">Status</h2>
           <div className="flex items-center gap-5">
             <label className="flex items-center">
@@ -216,7 +216,7 @@ const CreateSupplier = () => {
         </div>
 
         {/* Buttons */}
-        <div className="col-span-3 flex justify-end gap-4 my-6">
+        <div className="col-span-3 flex justify-end gap-4 mr-5 my-6">
           <DeshboardButton
             text="Clear Form"
             type="reset"

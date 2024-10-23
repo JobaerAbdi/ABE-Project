@@ -140,14 +140,18 @@ const DashboardSidebar: React.FC<DashboardHeaderProps> = ({
                 >
                   {/* Dropdown options */}
                   <Link to="/Suppliers/CreateSupplier">
-                    <button className="p-3 border-0 text-white w-full">
-                      Create Supplier
-                    </button>
-                  </Link>
-                  <Link to="/">
-                    <button className="p-3 border-0 text-white w-full">
-                      Option 2
-                    </button>
+                    <div className="flex p-3 justify-start items-center gap-4">
+                      <img
+                        src={ICONS.CreateSupplierIcon}
+                        alt={`${item.text} icon`}
+                        className="w-auto"
+                      />
+                      <p
+                        className={`text-white ${collaps ? "hidden" : "block"}`}
+                      >
+                        Create Supplier
+                      </p>
+                    </div>
                   </Link>
                 </div>
               )}

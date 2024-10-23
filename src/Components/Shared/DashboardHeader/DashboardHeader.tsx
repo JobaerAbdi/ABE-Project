@@ -12,15 +12,34 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({
 }) => {
   const location = useLocation();
 
-  const currentPath =
-    location.pathname === "/" ? "" : `/ ${location.pathname.substring(1)}`;
+  // Split the pathname by "/" and filter out empty strings
+  const pathSegments = location.pathname.split("/").filter(Boolean);
 
   return (
-    <div className="bg-white mb-6 py-5  px-7 border-b flex justify-between items-center">
-      <div className="text-gray-600 font-medium">
+    <div className="bg-white mb-6 py-5 px-7 border-b flex justify-between items-center">
+      <div className="text-gray-600 font-normal">
         {/* Conditional rendering based on screen size */}
-        <span className="hidden lg:block">
-          Dashboard <span className="text-black">{currentPath}</span>
+        <span className="hidden font-semibold lg:block">
+          Dashboard{" "}
+          {/* Display each word with slashes, 10px space, and color logic */}
+          {pathSegments.length > 0 && (
+            <span className="inline-flex  items-center whitespace-nowrap">
+              {pathSegments.map((segment, index) => (
+                <span key={index} className="inline-flex items-center">
+                  <span
+                    className={`${
+                      index === pathSegments.length - 1
+                        ? "text-black"
+                        : "text-gray-500"
+                    }`}
+                  >
+                    &nbsp; &nbsp; / &nbsp; &nbsp;
+                    {segment}
+                  </span>
+                </span>
+              ))}
+            </span>
+          )}
         </span>
         <span className="hidden md:block lg:hidden">Dashboard</span>
 

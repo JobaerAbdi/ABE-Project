@@ -28,6 +28,7 @@ import Admin from "../assets/icons/admin.svg";
 import SupplierIcon1 from "../assets/icons/SupplierIcon1.svg";
 import SupplierIcon2 from "../assets/icons/SupplierIcon2.svg";
 import SupplierIcon3 from "../assets/icons/SupplierIcon3.svg";
+import CreateSupplierIcon from "../assets/icons/CreateSupplierIcon.svg";
 
 //three line icon
 import ThreeLineIcon from "../assets/icons/ThreeLineIcon.svg";
@@ -64,6 +65,7 @@ export const ICONS = {
   SupplierIcon3,
   ThreeLineIcon,
   CrossIcon,
+  CreateSupplierIcon,
 };
 
 export const IMAGES = {
